@@ -1,0 +1,28 @@
+# Batch script to add undertow handler example module and enable the handler
+
+# Start batching commands
+batch
+
+# Uncomment if module is alread defined
+# module remove --name=org.jboss.example.undertow
+
+# Install the module
+# Depends on Java/Java EE API and Undertow Core API
+module add --name=org.jboss.example.undertow --slot=main --resources=target/undertow-example-handler.jar --dependencies=io.undertow.core,org.jboss.logging,javaee.api,javax.api
+
+# add the handler to undertow subsystem
+/subsystem=undertow/configuration=filter/custom-filter=hello-handler:add(class-name=org.jboss.example.undertow.HelloHandler, module=org.jboss.example.undertow)
+
+# add a parameter to the handler
+# /subsystem=undertow/configuration=filter/custom-filter=hello-handler:write-attribute(name=parameters.message,value=test)
+
+# add the filter ref to the host to enable it
+/subsystem=undertow/server=default-server/host=default-host/filter-ref=hello-handler:add(predicate="path-prefix(/hello)")
+
+# Run the batch commands
+run-batch
+
+# Reload the server configuration
+:reload
+
+
