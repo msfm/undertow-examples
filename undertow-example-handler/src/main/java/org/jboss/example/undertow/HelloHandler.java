@@ -46,7 +46,6 @@ public class HelloHandler implements HttpHandler {
         log.info("requestPath = " + exchange.getRequestPath());
         exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/plain");
         exchange.getResponseSender().send(message);
-        exchange.endExchange();
     }
 
     public void setMessage(String message) {
