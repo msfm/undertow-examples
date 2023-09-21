@@ -83,7 +83,7 @@
         <!-- WildFly Maven plug-in to deploy your WAR to a local JBoss EAP container -->
         <version.wildfly.maven.plugin>2.0.0.Final</version.wildfly.maven.plugin>
 
-        <version.io.undertow>2.0.28.Final</version.io.undertow>
+        <version.io.undertow>2.2.25.SP3-redhat-00001</version.io.undertow>
         <!-- <version.io.undertow>2.0.16.Final</version.io.undertow> -->
         <version.org.jboss.logging>3.3.2.Final</version.org.jboss.logging>
 
